@@ -1,2 +1,46 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+#_______ FILE "Funcs.py" _________________________________________________
+
+def plus(nums):
+    print(sum(nums))
+
+
+def minus(fin):
+    for i, j in zip(fin[1:], fin[:-1]):
+        print(j-i)
+
+
+def multiplication(fin):
+    for i, j in zip(fin[1:], fin[:-1]):
+        print(j*i)
+
+
+def division(fin):
+    for i, j in zip(fin[1:], fin[:-1]):
+        print(j/i)
+
+
+#_______ FILE "main_clac.py" _________________________________________________
+
+from Funcs import plus, minus, multiplication, division
+
+a = input("type here: ")
+b = []
+
+for i in a:
+    b.append(i)
+
+
+if '+' in b:
+    plus([int(x) for x in (a.split("+"))])
+
+elif '-' in b:
+    minus([int(x) for x in (a.split("-"))])
+
+elif '*' in b:
+    multiplication([int(x) for x in (a.split("*"))])
+
+elif '/' in b and b[-1] == '0':
+    print('DivisionByZero Error')
+
+elif '/' in b:
+    division([int(x) for x in (a.split("/"))])
